@@ -1,0 +1,25 @@
+{
+  "systemInstruction": { "parts": [ { "text": "" } ] },
+  "contents": [ 
+    { "parts": [ { "text": "" } ] }
+  ],
+  "generationConfig": {
+    "responseFormat": {
+      "text": {
+        "mimeType": "APPLICATION_JSON",
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "index": { "type": "string", "description": "题目的编号或索引，应与输入的题目列表中的题号对应" },
+              "explanation": { "type": "string", "description": "对题目的解析/分析内容，包含错别字的猜测与修正，以及对题目选项的分析，最后给出正确答案的选择理由" },
+              "content": { "type": "string", "description": "题目的答案，具体取决于题目的类型，通常是选项中的一个，如 A、B、C、D 等，或者是简答题的直接答案文本。" }
+            },
+            "required": ["index", "explanation", "content"]
+          }
+        }
+      }
+    }
+  }
+}

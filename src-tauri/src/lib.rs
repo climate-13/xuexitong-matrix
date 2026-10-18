@@ -1,0 +1,50 @@
+pub mod app;
+pub mod commands;
+pub mod config;
+pub mod core;
+
+#[cfg_attr(mobile, tauri::mobile_entry_point)]
+pub fn run() {
+    if app::single::restore_existing() { return; }
+    // This build owns one manager profile and many account-specific browser stores.
+    unsafe { std::env::set_var("UXS_MANAGER_MODE", "1"); }
+    #[cfg(debug_assertions)]
+    uxs_commands::sync_bindings!();
+
+    use app::webview::UrlStack;
+    use app::window;
+    use commands::chaoxing::CourseMetaMap;
+    use commands::mask::Confirmations;
+    use commands::updater::DownloadState;
+
+    #[cfg(target_os = "windows")]
+    // Set before Tauri starts its worker threads, so no other thread can access the environment concurrently.
+    unsafe {
+        let debugging = if std::env::var_os("UXS_MANAGER_TEST_MODE").is_some() { " --remote-debugging-port=9337" } else { "" };
+        std::env::set_var(
+            "WEBVIEW2_ADDITIONAL_BROWSER_ARGUMENTS",
+            format!("--disable-background-timer-throttling \
+             --disable-renderer-backgrounding \
+             --disable-backgrounding-occluded-windows \
+             --disable-background-media-suspend \
+             --disable-features=CalculateNativeWinOcclusion,IntensiveWakeUpThrottling \
+             --lang=zh-CN --accept-lang=zh-CN,zh{debugging}"),
+        );
+    }
+
+    tauri::Builder::default()
+        .plugin(core::logger::plugin())
+        .plugin(tauri_plugin_opener::init())
+        .plugin(tauri_plugin_updater::Builder::new().build())
+        .plugin(tauri_plugin_process::init())
+        .on_window_event(window::listener)
+        .manage(UrlStack::default())
+        .manage(CourseMetaMap::default())
+        .manage(Confirmations::default())
+        .manage(DownloadState::default())
+        .manage(app::accounts::Accounts::default())
+        .invoke_handler(uxs_commands::register!())
+        .setup(window::init)
+        .run(tauri::generate_context!())
+        .expect("error while running tauri application");
+}

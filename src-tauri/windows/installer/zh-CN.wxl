@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<WixLocalization Culture="zh-CN" xmlns="http://schemas.microsoft.com/wix/2006/localization">
+  <String Id="TauriLanguage">2052</String>
+  <String Id="TauriCodepage">936</String>
+  <String Id="LaunchApp">安装完成后启动 uXueScript</String>
+  <String Id="DowngradeErrorMessage">已安装更新版本，无法安装较旧版本。</String>
+  <String Id="PathEnvVarFeature">将 uXueScript 安装目录添加到 PATH 环境变量。</String>
+  <String Id="InstallAppFeature">安装 uXueScript。</String>
+</WixLocalization>

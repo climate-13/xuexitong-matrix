@@ -1,0 +1,68 @@
+name: Draft Windows release
+on:
+  push:
+    tags: ['v*']
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Existing release tag, for example v0.1.0
+        required: true
+        type: string
+permissions:
+  contents: write
+concurrency:
+  group: sk-release-${{ inputs.tag || github.ref_name }}
+  cancel-in-progress: false
+jobs:
+  windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.tag || github.ref_name }}
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 12.3.4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: pnpm
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+            target
+          key: windows-sk-${{ hashFiles('**/Cargo.lock') }}
+      - run: pnpm install --frozen-lockfile
+      - name: Validate tag
+        shell: pwsh
+        env:
+          RELEASE_TAG: ${{ inputs.tag || github.ref_name }}
+        run: |
+          if ($env:RELEASE_TAG -notmatch '^v\d+\.\d+\.\d+$') { throw 'Use a vX.Y.Z tag' }
+          $build = Get-Content -LiteralPath config/build.json -Raw | ConvertFrom-Json
+          if ($env:RELEASE_TAG -ne "v$($build.version)") { throw 'Tag and build version differ' }
+      - name: Build and test
+        shell: pwsh
+        run: ./scripts/build-windows.ps1
+      - name: Add matching source
+        shell: pwsh
+        run: |
+          $build = Get-Content -LiteralPath config/build.json -Raw | ConvertFrom-Json
+          git archive --format=zip --output="release/sk-matrix-$($build.version)-source.zip" HEAD
+          if ($LASTEXITCODE -ne 0) { throw 'Source archive failed' }
+      - uses: actions/upload-artifact@v4
+        with:
+          name: sk-matrix-windows
+          path: release/*
+      - name: Create draft release
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          RELEASE_TAG: ${{ inputs.tag || github.ref_name }}
+        run: |
+          $build = Get-Content -LiteralPath config/build.json -Raw | ConvertFrom-Json
+          $assets = Get-ChildItem -LiteralPath release -File | ForEach-Object FullName
+          gh release create "$env:RELEASE_TAG" --verify-tag --draft --title "xuexitong矩阵刷课 $($build.version)" --notes-file ".github/release-notes/${env:RELEASE_TAG}.md" @assets

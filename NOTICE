@@ -1,0 +1,20 @@
+SK Matrix / 学习通矩阵账号 SK
+Maintained by climate-13.
+
+This project is a modified distribution derived from:
+  uXueScript, by unraous and its contributors
+  https://github.com/unraous/uxuescript
+  Baseline: v2.2.2
+  License: GNU General Public License version 3 (GPL-3.0)
+
+The original course automation engine, quiz/font processing, command machinery
+and other retained upstream components remain subject to their original notices
+and the GPL. The full license is provided in LICENSE.
+
+SK Matrix additions include the single-window multi-account runtime, isolated
+account profiles, live video mosaic, shared API configuration and quota gate,
+background viewport handling, account lifecycle controls, visual identity,
+and the Windows-focused distribution workflow.
+
+SK Matrix is independently maintained. It is not an official Chaoxing product
+and is not presented as an original rewrite of all upstream components.

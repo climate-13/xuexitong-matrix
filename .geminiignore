@@ -1,0 +1,20 @@
+# Exclude heavy dependencies and build artifacts from Antigravity agent context
+node_modules/
+dist/
+.venv/
+.antigravitycli/
+src-tauri/target/
+
+# Exclude large auto-generated files
+package-lock.json
+
+# Exclude large binary/media files
+*.ico
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.webp
+*.mp4
+*.zip
+*.tar.gz

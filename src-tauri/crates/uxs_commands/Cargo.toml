@@ -1,0 +1,15 @@
+[package]
+name = "uxs_commands"
+version = "2.0.1"
+authors = ["unraous"]
+edition = "2021"
+description = "Project-specific Tauri command, Specta binding, and WebView permission macros."
+
+[lib]
+proc-macro = true
+
+[dependencies]
+quote = "1.0"
+serde_json = "1.0"
+syn = { version = "2.0", features = ["full", "visit"] }
+walkdir = "2.4"

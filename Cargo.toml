@@ -1,0 +1,20 @@
+[workspace]
+members = ["src-tauri", "src-tauri/crates/uxs_commands"]
+default-members = ["src-tauri"]
+resolver = "2"
+
+# 降低 debug 调试信息级别（显著减少磁盘 I/O 和链接体积）
+[profile.dev]
+debug = 1
+codegen-units = 256
+
+# 第三方依赖开启 3 级优化（依赖库只需编译一次，优化后编译产物更小，加速后续链接）
+[profile.dev.package."*"]
+opt-level = 3
+
+[profile.release]
+opt-level = "s"
+lto = "thin"
+codegen-units = 1
+panic = "abort"
+strip = true

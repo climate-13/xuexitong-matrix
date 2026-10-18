@@ -1,0 +1,20 @@
+{
+  "name": "学习通矩阵账号 SK",
+  "englishName": "SK Matrix",
+  "slug": "sk-matrix",
+  "owner": "climate-13",
+  "version": "0.1.1",
+  "palette": {
+    "forest": "#3e5648",
+    "sage": "#91a384",
+    "paper": "#f5f5f2",
+    "ink": "#252a23"
+  },
+  "upstream": {
+    "repository": "https://github.com/unraous/uxuescript",
+    "tag": "v2.2.2",
+    "license": "GPL-3.0-only"
+  },
+  "repositoryTitle": "xuexitong矩阵刷课",
+  "repositorySlug": "xuexitong-matrix"
+}

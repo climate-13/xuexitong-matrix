@@ -1,0 +1,8 @@
+{
+  "version": "99.0.0",
+  "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSNlZuZWpXQ2hFWnJLdHJ3N1FlWnBHV2FlZEtlMnYzeC9rbVdtVFVVUmFsNURtOWRTc3ZOYXNWOURjUnluUjdqVU8rZ1A5ejBvU2FhcEdEQnZJRlZyUVpFMEx3L2Y4dGdNPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkxMjc1MjI3CWZpbGU6dXBkYXRlLm1zaS56aXAJdmVyc2lvbjo5OS4wLjAKWXFlei95c2xGS1pWVFpOdEh1cTdid0tNVm85emk1cUs3VEdndFdBaE14cVd6VUNnTEZCZVJVbEZjZGRUMCtFVEdndW0xNzhyNFpmd1RQTm1SU0JLQ1E9PQo=",
+  "bundle": [
+    80, 75, 5, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+  ],
+  "notes": "uXueScript 本地更新模拟\n验证弹窗与下载；空 ZIP 不含安装程序，安装预期失败。"
+}

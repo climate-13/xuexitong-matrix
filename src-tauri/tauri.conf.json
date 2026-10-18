@@ -1,0 +1,69 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "学习通矩阵账号 SK",
+  "identifier": "io.climate13.skmatrix",
+  "build": {
+    "beforeDevCommand": "pnpm run dev",
+    "devUrl": "http://localhost:1425",
+    "beforeBuildCommand": "pnpm run build",
+    "frontendDist": "../dist"
+  },
+  "app": {
+    "macOSPrivateApi": true,
+    "security": {
+      "csp": null
+    }
+  },
+  "bundle": {
+    "active": true,
+    "createUpdaterArtifacts": true,
+    "targets": "all",
+    "publisher": "climate-13",
+    "licenseFile": "../LICENSE",
+    "macOS": {
+      "signingIdentity": "-"
+    },
+    "windows": {
+      "wix": {
+        "fragmentPaths": [
+          "./windows/fragments/updater-marker.wxs"
+        ],
+        "componentRefs": [
+          "UpdaterInstallMarker"
+        ],
+        "upgradeCode": "7e31dac3-88dd-431d-9cae-115991753872",
+        "language": {
+          "zh-CN": {
+            "localePath": "./windows/installer/zh-CN.wxl"
+          }
+        },
+        "bannerPath": "./windows/installer/banner.bmp",
+        "dialogImagePath": "./windows/installer/dialog.bmp"
+      }
+    },
+    "icon": [
+      "icons/icon.png",
+      "icons/icon.ico"
+    ]
+  },
+  "version": "0.1.1",
+  "plugins": {
+    "uxuescript": {
+      "homeUrl": "https://i.mooc.chaoxing.com/",
+      "updateEnabled": false,
+      "msi": {
+        "componentId": "UpdaterInstallMarker",
+        "valueName": "UpdaterInstall",
+        "value": 1,
+        "keys": {
+          "io.climate13.skmatrix": "Software\\SKMatrix\\Desktop",
+          "io.climate13.skmatrix.mock": "Software\\SKMatrix\\Desktop.mock"
+        }
+      }
+    },
+    "updater": {
+      "endpoints": [],
+      "pubkey": ""
+    }
+  }
+}

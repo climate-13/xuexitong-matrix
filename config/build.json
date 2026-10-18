@@ -1,0 +1,40 @@
+{
+  "version": "0.1.1",
+  "app": {
+    "name": "sk-matrix",
+    "artifact_prefix": "sk-matrix",
+    "author": "climate-13",
+    "title": "学习通矩阵账号 SK",
+    "identifier": "io.climate13.skmatrix",
+    "mock_identifier": "io.climate13.skmatrix.mock",
+    "home_url": "https://i.mooc.chaoxing.com/"
+  },
+  "updater": {
+    "enabled": false,
+    "pubkey": "",
+    "endpoints": [],
+    "release_url": "https://github.com/climate-13/xuexitong-matrix/releases",
+    "mock": {
+      "port": 35821,
+      "versions": [
+        "0.1.0",
+        "0.1.1"
+      ]
+    }
+  },
+  "msi": {
+    "component_id": "UpdaterInstallMarker",
+    "value_name": "UpdaterInstall",
+    "value": 1,
+    "default": {
+      "key": "Software\\SKMatrix\\Desktop",
+      "guid": "5FE34CCC-C3A4-41AE-95A7-8903506AEF60",
+      "upgrade_code": "7e31dac3-88dd-431d-9cae-115991753872"
+    },
+    "mock": {
+      "key": "Software\\SKMatrix\\Desktop.mock",
+      "guid": "AC1DD2A9-3C3E-4A1D-ABE9-5DA9E243B412",
+      "upgrade_code": "25820434-eaa1-43ea-a6fd-2b0d28264888"
+    }
+  }
+}

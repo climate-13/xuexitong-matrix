@@ -1,0 +1,75 @@
+[package]
+name = "sk-matrix"
+default-run = "sk-matrix"
+version = "0.1.1"
+description = "SK Matrix - a multi-account live course dashboard, derived from uXueScript."
+license = "GPL-3.0-only"
+repository = "https://github.com/climate-13/sk-matrix"
+authors = ["climate-13"]
+edition = "2024"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[lib]
+# The `_lib` suffix may seem redundant but it is necessary
+# to make the lib name unique and wouldn't conflict with the bin name.
+# This seems to be only an issue on Windows, see https://github.com/rust-lang/cargo/issues/8519
+name = "uxs_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[features]
+sync-bindings = []
+
+[[bin]]
+name = "sync-bindings"
+path = "src/bin/sync-bindings.rs"
+required-features = ["sync-bindings"]
+
+[build-dependencies]
+tauri-build = { version = "2.6.3", features = [] }
+
+[dependencies]
+tauri = { version = "2.11.5", features = [
+    "unstable",
+    "macos-private-api",
+    "webview-data-url",
+    "image-ico",
+    "image-png",
+    "devtools",
+] }
+tauri-plugin-opener = "2.5.4"
+tauri-plugin-process = "2"
+tauri-plugin-updater = "2"
+serde = { version = "1.0.229", features = ["derive"] }
+specta = { version = "=2.0.0-rc.25", features = ["derive"] }
+specta-typescript = "0.0.12"
+tauri-specta = { version = "=2.0.0-rc.25", features = ["typescript"] }
+serde_json = "1.0.151"
+log = { version = "0.4.33", features = ["serde"] }
+tokio = { version = "1.53.1", features = ["full"] }
+anyhow = "1.0.104"
+chrono = "0.4.45"
+dirs = "6.0.0"
+toml = "1.1.3"
+scraper = "0.27.0"
+regex = "1.13.1"
+base64 = "0.22.1"
+ttf-parser = "0.25.1"
+async-trait = "0.1.91"
+reqwest = { version = "0.13.4", features = ["json", "blocking"] }
+dotenv = "0.15.0"
+strum = { version = "0.28.0", features = ["derive"] }
+uxs_commands = { path = "./crates/uxs_commands" }
+parking_lot = { version = "0.12.5", features = ["serde"] }
+thiserror = "2.0.19"
+md5 = "0.7"
+tauri-plugin-log = "2"
+
+
+
+
+[dev-dependencies]
+flate2 = "1.1"
+
+[target.'cfg(windows)'.dependencies]
+winreg = "0.55"

@@ -1,0 +1,109 @@
+@property --theme-brand {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: transparent;
+}
+
+@property --theme-black {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #000;
+}
+
+@property --theme-white {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #fff;
+}
+
+@property --theme-surface {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: transparent;
+}
+
+@property --theme-surface-light {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: transparent;
+}
+
+:root {
+  --theme-black: #000;
+  --theme-white: #fff;
+  --theme-brand: #0d58a4;
+  --theme-surface: #e8dcc4;
+  --theme-surface-light: #f0ebe0;
+  --theme-logo-primary: var(--theme-brand-deep);
+  --theme-logo-secondary: var(--theme-surface);
+  --theme-brand-deep: color-mix(
+    in srgb,
+    var(--theme-brand) 86%,
+    var(--theme-black)
+  );
+  --theme-brand-deeper: color-mix(
+    in srgb,
+    var(--theme-brand) 75%,
+    var(--theme-black)
+  );
+  --theme-surface-accent: rgb(
+    from var(--theme-surface) calc(r + 3) calc(g + 6) calc(b + 11)
+  );
+  --theme-on-brand-hover: rgb(
+    from var(--theme-surface) calc(r + 5) calc(g + 9) calc(b + 17)
+  );
+  --theme-muted: color-mix(
+    in srgb,
+    var(--theme-black) 50%,
+    var(--theme-white)
+  );
+  --theme-page-gradient: linear-gradient(
+    135deg,
+    var(--theme-surface) 0%,
+    var(--theme-surface-light) 100%
+  );
+}
+
+:root {
+  transition:
+    --theme-black 300ms ease,
+    --theme-white 300ms ease,
+    --theme-brand 300ms ease,
+    --theme-surface 300ms ease,
+    --theme-surface-light 300ms ease;
+}
+
+:root[data-theme-mode="dark"] {
+  --theme-black: #fff;
+  --theme-white: #000;
+  --theme-logo-primary: var(--theme-surface-light);
+  --theme-logo-secondary: var(--theme-brand);
+}
+
+::selection {
+  color: var(--theme-surface);
+  background-color: var(--theme-brand);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    transition: none;
+  }
+}
+
+.gsap-ripple {
+  background: color-mix(in srgb, var(--theme-white) 75%, transparent);
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 5px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: var(--theme-brand-deep);
+  border-radius: 0;
+}

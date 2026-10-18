@@ -1,0 +1,18 @@
+{
+  "default": null,
+  "permission": [
+    {
+      "commands": {
+        "allow": [
+          "cancel_update_download",
+          "current_theme",
+          "hide_mask",
+          "show_content"
+        ],
+        "deny": []
+      },
+      "description": "Commands used by local animation mask webviews",
+      "identifier": "commands-mask"
+    }
+  ]
+}

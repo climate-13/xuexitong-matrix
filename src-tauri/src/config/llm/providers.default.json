@@ -1,0 +1,108 @@
+{
+  "bigmodel": {
+    "name": "BigModel",
+    "isCustom": false,
+    "protocol": "OpenAIChatCompletions",
+    "baseUrl": "https://open.bigmodel.cn/api/paas/v4/chat/completions",
+    "apiKey": null,
+    "models": [
+      "glm-4.7-flash",
+      "glm-4.7-flashx",
+      "glm-4.5-air",
+      "glm-5.3-flash",
+      "glm-5.3-flashx",
+      "glm-5.3",
+      "glm-5.2"
+    ],
+    "chosenModel": 0,
+    "extraBody": {
+      "temperature": 0.7,
+      "top_p": 0.95,
+      "response_format": { "type": "json_object" }
+    }
+  },
+  "deepseek": {
+    "name": "DeepSeek",
+    "isCustom": false,
+    "protocol": "OpenAIChatCompletions",
+    "baseUrl": "https://api.deepseek.com/chat/completions",
+    "apiKey": null,
+    "models": ["deepseek-flash", "deepseek-v4-pro"],
+    "chosenModel": 0,
+    "extraBody": {
+      "temperature": 0.7,
+      "top_p": 0.95,
+      "response_format": { "type": "json_object" }
+    }
+  },
+  "google": {
+    "name": "Google",
+    "isCustom": false,
+    "protocol": "GoogleGemini",
+    "baseUrl": "https://generativelanguage.googleapis.com/v1beta/models",
+    "apiKey": null,
+    "models": [
+      "gemini-3.5-flash-lite",
+      "gemini-3.1-flash-lite",
+      "gemini-3.8-flash",
+      "gemini-3.6-flash",
+      "gemini-3.1-pro-preview"
+    ],
+    "chosenModel": 0,
+    "extraBody": null
+  },
+  "moonshot": {
+    "name": "Moonshot",
+    "isCustom": false,
+    "protocol": "OpenAIChatCompletions",
+    "baseUrl": "https://api.moonshot.cn/v1/chat/completions",
+    "apiKey": null,
+    "models": ["kimi-k2.6", "kimi-k3", "kimi-k2.7-code", "kimi-k2.7-code-highspeed"],
+    "chosenModel": 0,
+    "extraBody": null
+  },
+  "openai": {
+    "name": "OpenAI",
+    "isCustom": false,
+    "protocol": "OpenAIResponses",
+    "baseUrl": "https://api.openai.com/v1/responses",
+    "apiKey": null,
+    "models": [
+      "gpt-6-luna",
+      "gpt-5-nano",
+      "gpt-5-mini",
+      "gpt-4o-mini",
+      "gpt-5.4-mini",
+      "gpt-6.1-sol",
+      "gpt-6-astra"
+    ],
+    "chosenModel": 0,
+    "extraBody": null
+  },
+  "openrouter": {
+    "name": "OpenRouter",
+    "isCustom": false,
+    "protocol": "OpenAIChatCompletions",
+    "baseUrl": "https://openrouter.ai/api/v1/chat/completions",
+    "apiKey": null,
+    "models": [
+      "poolside/laguna-xs-2.1:free",
+      "nvidia/nemotron-3-super-120b-a12b:free",
+      "google/gemma-4-31b-it:free"
+    ],
+    "chosenModel": 0,
+    "extraBody": null
+  },
+  "ollama": {
+    "name": "Ollama",
+    "isCustom": false,
+    "protocol": "OpenAIChatCompletions",
+    "baseUrl": "http://localhost:11434/api/chat",
+    "apiKey": null,
+    "models": [],
+    "chosenModel": null,
+    "extraBody": {
+      "stream": false
+    }
+  }
+}

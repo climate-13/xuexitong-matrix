@@ -1,0 +1,21 @@
+{
+  "default": null,
+  "permission": [
+    {
+      "commands": {
+        "allow": [
+          "account_heartbeat",
+          "confirm",
+          "insert_course_meta_map",
+          "options",
+          "platform",
+          "send_status",
+          "solve_quiz"
+        ],
+        "deny": []
+      },
+      "description": "allowing commands invocation for chaoxing webview",
+      "identifier": "commands-chaoxing"
+    }
+  ]
+}
