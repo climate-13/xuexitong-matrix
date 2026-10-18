@@ -16,6 +16,7 @@
 </p>
 
 <p align="center">
+  <a href="https://github.com/climate-13/xuexitong-matrix/releases">下载 Windows 版</a> ·
   <a href="docs/USAGE.md">开始使用</a> ·
   <a href="docs/BUILD.md">本地构建</a> ·
   <a href="CHANGELOG.md">更新记录</a> ·
@@ -88,7 +89,7 @@ pnpm build
 ./scripts/build-windows.ps1
 ```
 
-详见 [构建说明](docs/BUILD.md)。Windows CI 和草稿 Release 工作流已提供；
+详见 [构建说明](docs/BUILD.md)。Windows CI 和预览 Release 工作流已提供；
 推送到你的仓库后，以实际运行结果为准。
 
 ## 开源

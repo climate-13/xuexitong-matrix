@@ -31,3 +31,9 @@ README 使用 docs/brand/social-preview.png 和 docs/assets/studio.jpg。
 ## 发布说明可直接使用
 
 见 .github/release-notes/v0.1.0.md。
+
+## GitHub 发布入口
+
+Windows 检查工作流在 main 提交后运行。发布预览版有三种入口：推送 vX.Y.Z 标签；手动运行 Windows preview release 并填写现有标签；或者以 `release: publish vX.Y.Z` 为提交标题推送到 main。
+
+发布工作流运行前端和 Rust 检查，生成 Windows x64 程序、对应源码和 SHA256SUMS，并以当前源码提交创建 GitHub 预览 Release。版本取自 config/build.json；已有标签必须与该版本一致。当前 0.1.x 作为早期预览版发布。
