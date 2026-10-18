@@ -4,6 +4,7 @@ import { openUrl } from "@tauri-apps/plugin-opener";
 import { commands } from "@/services/cmds";
 import { showError } from "@/services/errors";
 import { useUpdater } from "@/composables/useUpdater";
+import buildConfig from "../config/build.json";
 
 const mocks = vi.hoisted(() => ({ closeResource: vi.fn(async () => {}) }));
 
@@ -71,7 +72,7 @@ describe("useUpdater", () => {
     vi.mocked(commands.confirm).mockResolvedValue(true);
     await useUpdater().checkForUpdates("2.1.4");
     expect(openUrl).toHaveBeenCalledWith(
-      "https://github.com/climate-13/sk-matrix/releases",
+      buildConfig.updater.release_url,
     );
     expect(commands.downloadUpdate).not.toHaveBeenCalled();
     expect(mocks.closeResource).toHaveBeenCalledOnce();
