@@ -1,39 +1,35 @@
-# 发布到 GitHub
+# GitHub 发布说明
 
-仓库建议名称：climate-13/xuexitong-matrix。
-GitHub 简介：
+仓库：<https://github.com/climate-13/xuexitong-matrix>
 
-> xuexitong矩阵刷课：一个窗口管理多个独立账号，实时视频拼盘、共享 API 与后台任务控制。Windows / Tauri / Vue / Rust。
+项目标题：**xuexitong矩阵刷课**。桌面客户端名为「学习通矩阵账号 SK / SK Matrix」。
 
-Topics：tauri、vue、rust、windows、dashboard、multi-account、course-assistant。
+简介：多账号管理、实时视频拼盘、后台运行。Windows / Tauri / Vue / Rust。
 
-## 首次上传
+可选 Topics：xuexitong、chaoxing、tauri、vue、rust、windows、multi-account。
 
-在 GitHub 创建仓库后，将本项目源码推送到该仓库。保留 LICENSE、
-NOTICE 和上游来源说明。源码包中不需要上传 node_modules、target、
-dist、release 或任何实际账号数据。
+## 源码维护
 
-## 首次发行
+源码保留 LICENSE、NOTICE 和上游来源说明。不要提交 node_modules、target、dist、release、实际账号数据或 API 密钥。
 
-1. 确认 config/build.json 的 version 为 0.1.0，并通过本地检查。
-2. 推送源码后，创建并推送 v0.1.0 标签。
-3. Release 工作流会构建 Windows 便携版并创建 **草稿 Release**。
-4. 检查构建日志、程序、校验文件和 Release 文案，再手动发布草稿。
+Windows checks 会检查 main 上的提交和 Pull Request。远程构建是否成功，以对应 GitHub Actions 运行结果为准。
 
-GitHub Actions 尚未在这个新仓库上实际运行；本地检查通过不等于
-远程构建已成功。工作流不会同步到上游或 Gitee，也不需要沿用上游
-的更新签名私钥。
+## 发布 Windows 预览版
 
-GitHub 仓库的 Social preview 可上传 docs/brand/social-preview.png。
-README 使用 docs/brand/social-preview.png 和 docs/assets/studio.jpg。
-截图中的视频为明确标注的本地测试素材。
+当前版本为 **0.1.1**；版本统一由 config/build.json 管理。更新版本后应同步生成配置和 Cargo.lock，并写好 .github/release-notes/vX.Y.Z.md。
 
-## 发布说明可直接使用
+Windows preview release 支持以下入口：
 
-见 .github/release-notes/v0.1.0.md。
+1. 将标题为 `release: publish vX.Y.Z` 的提交推送到 main。工作流按 config/build.json 的版本发布，并在该源码提交上创建对应标签。
+2. 推送已有的 vX.Y.Z 标签；该标签的版本须与 config/build.json 一致。
+3. 在 Actions 中手动运行 Windows preview release，填写要发布的现有标签。
 
-## GitHub 发布入口
+工作流运行前端与 Rust 检查，构建 Windows x64 程序，并上传程序、对应源码、LICENSE、NOTICE、使用说明和 SHA256SUMS。当前 0.1.x 以 **Pre-release（预览版）** 公开发布；不是等待手动发布的草稿。
 
-Windows 检查工作流在 main 提交后运行。发布预览版有三种入口：推送 vX.Y.Z 标签；手动运行 Windows preview release 并填写现有标签；或者以 `release: publish vX.Y.Z` 为提交标题推送到 main。
+下载入口：<https://github.com/climate-13/xuexitong-matrix/releases>
 
-发布工作流运行前端和 Rust 检查，生成 Windows x64 程序、对应源码和 SHA256SUMS，并以当前源码提交创建 GitHub 预览 Release。版本取自 config/build.json；已有标签必须与该版本一致。当前 0.1.x 作为早期预览版发布。
+## 品牌与来源
+
+GitHub Social preview 可使用 docs/brand/social-preview.png。README 的演示画面使用本地动态视频测试素材，不展示真实账号资料或课程完成记录。
+
+项目继承自 unraous/uXueScript v2.2.2，沿用 GPL-3.0。工作流不会同步到上游或 Gitee；自动更新当前关闭，不沿用上游签名私钥。
